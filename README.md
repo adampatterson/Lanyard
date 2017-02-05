@@ -5,7 +5,7 @@
 ## Configuration
 Update the details in `/plugin.php`, checkout the WordPress [Plugin Development](https://codex.wordpress.org/Developer_Documentation#Plugin_Development) docs for more information on that.
 
-Next, search and replace `PluginNameSpace` with your plugins namespace, or leave it alone. Your call.
+Next, Search and replace `PluginNameSpace` with your plugins namespace, or leave it alone. Your call.
 
 The rest should be straight forward and commented in the code.
 
