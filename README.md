@@ -27,3 +27,5 @@ Included is:
  * "erusev/parsedown"
     
 Keep or remove any package you like, Just note the the helpers rely on `illuminate/support` and `symfony/var-dumper` so adjust accordingly.
+
+Don't forget to composer update!
