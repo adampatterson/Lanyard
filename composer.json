@@ -1,0 +1,19 @@
+{
+  "name": "adampatterson/Lanyard",
+  "description": "Plugin Description",
+  "license": "MIT",
+  "require": {
+    "illuminate/support": "5.5.*",
+    "symfony/var-dumper": "~3.2",
+    "erusev/parsedown": "^1.6"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "PluginNameSpace\\": "app/"
+    }
+  }
+}
