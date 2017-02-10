@@ -4,7 +4,7 @@ namespace PluginNameSpace;
 
 use Parsedown;
 
-class App {
+class App extends Actions {
 
 	/**
 	 * @var array

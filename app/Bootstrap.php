@@ -82,5 +82,3 @@ class Bootstrap extends App {
 		return self::$instance;
 	}
 }
-
-add_action( 'plugins_loaded', array( 'PluginNameSpace\Bootstrap', 'init' ) );
