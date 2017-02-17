@@ -30,7 +30,8 @@ class Bootstrap extends App {
 	 */
 	public static function init() {
 		try {
-			$wps = new Bootstrap();
+			new Bootstrap();
+			new Actions();
 		} catch ( Exception $e ) {
 
 		}
