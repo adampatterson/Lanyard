@@ -5,81 +5,95 @@ namespace PluginNameSpace;
 /*
  * The bulk of your Plugin should happen in /App.
  */
-class Bootstrap extends App {
 
-	private static $instance = null;
+class Bootstrap extends App
+{
 
-	function __construct() {
-		// Sets up the Admin Menu.
-		add_action( 'admin_menu', array( $this, 'adminMenu' ) );
+    private static $instance = null;
 
-		// Make sure that this is an admin page, and that the POST array exists.
-		if ( is_admin() && $_POST ) {
-			$this->saveOptions();
-		}
+    function __construct()
+    {
+        // Sets up the Admin Menu.
+        add_action('admin_menu', [$this, 'adminMenu']);
 
-		// Initialized the application.
-		parent::__construct();
+        // Make sure that this is an admin page, and that the POST array exists.
+        if (is_admin() && $_POST) {
+            $this->saveOptions();
+        }
 
-		// Sets $this, in the Static Context.
-		static::$instance = $this;
-	}
+        // Initialized the application.
+        parent::__construct();
 
-	/**
-	 * Initializes the plugin.
-	 */
-	public static function init() {
-		try {
-			new Bootstrap();
-			new Actions();
-		} catch ( Exception $e ) {
+        // Sets $this, in the Static Context.
+        static::$instance = $this;
+    }
 
-		}
-	}
+    /**
+     * Initializes the plugin.
+     */
+    public static function init()
+    {
+        try {
+            new Bootstrap();
+            new Actions();
+        } catch (Exception $e) {
 
-	/**
-	 * Registeres the Admin Menu.
-	 */
-	public function adminMenu() {
-		add_options_page( 'Lanyard Plugin Settings', 'Lanyard', 'edit_pages', 'lanyardsettings', array(
-			$this,
-			'adminOptionsPage'
-		) );
-	}
+        }
+    }
 
-	/**
-	 * Registers the Plugin Admin Page.
-	 */
-	public function adminOptionsPage() {
-		$title          = Helper::get( 'title' );
-		$config         = Helper::get(); // Returns an array containging call of the Config values.
-		$settings       = $this->settings; // Returns an array containing all of the settings from WordPress.
-		$example_select = $this->exampleSelect; // Static example of a select menu.
+    /**
+     * Registeres the Admin Menu.
+     */
+    public function adminMenu()
+    {
+        add_options_page($this->config::get('admin_menu.page_title'), $this->config::get('admin_menu.menu_title'),
+            'edit_pages', $this->config::get('admin_menu.menu_slug'), [
+                $this, 'adminOptionsPage'
+            ]);
+    }
 
-		$markdown_content = $this->renderMarkdown(); // For fun, Markdown is uncluded in the /App Controller.
+    /**
+     * Registers the Plugin Admin Page.
+     */
+    public function adminOptionsPage()
+    {
+        $title = $this->config::get('title');
 
-		require_once( dirname( __FILE__ ) . '/views/options.php' );
-	}
+        // Returns an array containging call of the Config values.
+        $config = $this->config::get();
 
-	/**
-	 * Handles the saving of Plugin settings.
-	 */
-	public function saveOptions() {
-		// Both Examples are required.
-		if ( ! isset( $_POST['example_string'] ) || ! isset( $_POST['example_select'] ) ) {
-			return;
-		}
-		// update the WordPress options with our settings.
-		update_option( 'lanyard-settings', array(
-			'example_string' => $_POST['example_string'],
-			'example_select' => $_POST['example_select']
-		) );
-	}
+        // Returns an array containing all of the settings from WordPress.
+        $settings = $this->settings;
 
-	/**
-	 * @return null
-	 */
-	public static function getInstance() {
-		return self::$instance;
-	}
+        // Static example of a select menu.
+        $example_select = $this->exampleSelect;
+
+        // For fun, Markdown is uncluded in the /App Controller.
+        $markdown_content = $this->renderMarkdown();
+
+        require_once(dirname(__FILE__).'/views/options.php');
+    }
+
+    /**
+     * Handles the saving of Plugin settings.
+     */
+    public function saveOptions()
+    {
+        // Both Examples are required.
+        if ( ! isset($_POST['example_string']) || ! isset($_POST['example_select'])) {
+            return;
+        }
+        // update the WordPress options with our settings.
+        update_option($this->config::get('get_option'), [
+            'example_string' => $_POST['example_string'], 'example_select' => $_POST['example_select']
+        ]);
+    }
+
+    /**
+     * @return null
+     */
+    public static function getInstance()
+    {
+        return self::$instance;
+    }
 }

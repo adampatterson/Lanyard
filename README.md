@@ -9,23 +9,22 @@ Next, Search and replace `PluginNameSpace` with your plugins namespace, or leave
 
 The rest should be straight forward and commented in the code.
 
+## Config.php
+An array of key values, including plugin options.
+
 ## Hooks
-Checkout the WordPress [Documentation](https://codex.wordpress.org/Plugin_API/Hooks) for all the hooks and actions :) 
+Checkout the WordPress [Documentation](https://codex.wordpress.org/Plugin_API/Hooks) for all the hooks and actions :)
 
 ## Helpers
-The configuration uses Illuminate's [Support](https://github.com/illuminate/support) helpers. This gives us access to most of [Laravels helper functions](https://laravel.com/docs/5.2/helpers). 
-
-## Config.php
-An array of key values.
+The configuration uses Laravel's [Helpers](https://github.com/laravel/helpers). This gives us access to most of [Laravels helper functions](https://laravel.com/docs/8.x/helpers).
 
 ## Composer
 
-Included is:
+Includes:
 
- * "illuminate/support"
- * "symfony/var-dumper"
- * "erusev/parsedown"
-    
-Keep or remove any package you like, Just note the the helpers rely on `illuminate/support` and `symfony/var-dumper` so adjust accordingly.
+* "erusev/parsedown"
+* "laravel/helpers"
+
+Keep or remove any package you like, Just note the the helpers rely on `laravel/helpers` so adjust accordingly.
 
 Don't forget to composer update!
