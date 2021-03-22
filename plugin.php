@@ -11,14 +11,20 @@
  * License:         MIT
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if ( ! defined('ABSPATH')) {
+    exit;
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
-//add_action( 'plugins_loaded', array( 'PluginNameSpace\Bootstrap', 'init' ) );
+require_once __DIR__.'/vendor/autoload.php';
 
-PluginNameSpace\Bootstrap::init();
+//PluginNameSpace\Bootstrap::init();
+add_action( 'plugins_loaded', array( 'PluginNameSpace\Bootstrap', 'init' ) );
 
-register_activation_hook( __FILE__, [ 'PluginNameSpace\Actions', 'activationHook' ] );
-register_deactivation_hook( __FILE__, [ 'PluginNameSpace\Actions', 'deactivationHook' ] );
+register_activation_hook(__FILE__, [
+    'PluginNameSpace\Actions',
+    'activationHook'
+]);
+register_deactivation_hook(__FILE__, [
+    'PluginNameSpace\Actions',
+    'deactivationHook'
+]);
