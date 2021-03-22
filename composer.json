@@ -3,8 +3,9 @@
   "description": "Plugin Description",
   "license": "MIT",
   "require": {
+    "erusev/parsedown": "dev-master",
     "laravel/helpers": "1.x-dev",
-    "erusev/parsedown": "^1.6"
+    "symfony/http-foundation": "5.x-dev"
   },
   "config": {
     "preferred-install": "dist"
