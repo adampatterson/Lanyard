@@ -2,6 +2,8 @@
 
 namespace PluginNameSpace;
 
+use Request\Request;
+
 class Base extends Actions
 {
 
@@ -9,10 +11,11 @@ class Base extends Actions
      * @var array
      */
     protected $settings;
+    protected $request;
 
     public function __construct()
     {
-        new Request();
+        $this->request = new Request();
 
         // Assigns the Options array from WordPress to `$this->settings`.
         $this->settings = get_option(Config::get('get_option'));

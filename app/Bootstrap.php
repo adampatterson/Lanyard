@@ -9,8 +9,14 @@ namespace PluginNameSpace;
 class Bootstrap extends Base
 {
 
+    /**
+     * @var null
+     */
     private static $instance = null;
 
+    /**
+     * Bootstrap constructor.
+     */
     function __construct()
     {
         parent::__construct();

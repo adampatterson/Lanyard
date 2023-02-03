@@ -4,8 +4,10 @@
   "license": "MIT",
   "require": {
     "erusev/parsedown": "dev-master",
-    "laravel/helpers": "1.x-dev",
-    "symfony/http-foundation": "5.x-dev"
+    "laravel/helpers": "v1.6.0",
+    "adampatterson/request": "dev-main",
+    "adampatterson/http": "dev-main",
+    "adampatterson/wpoauth": "dev-main"
   },
   "config": {
     "preferred-install": "dist"
